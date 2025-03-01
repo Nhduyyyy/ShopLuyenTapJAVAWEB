@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 /**
  * Lớp DBConnection giúp quản lý kết nối đến SQL Server. Dùng trong Java Web
  * (Servlet & JSP) để thực hiện truy vấn database. Nó giúp mở kết nối
- * (Connection) đến database Game_PRJ, chạy trên localhost với cổng 57000. Lớp
+ * (Connection) đến database ShopLuyenTap, chạy trên localhost với cổng 57000. Lớp
  * này có phương thức getConnection() để lấy kết nối khi cần.
  */
 public class DBConnection {
@@ -24,7 +24,7 @@ public class DBConnection {
 
     // dbURL: Đây là đường dẫn (URL) của database.
     // jdbc:sqlserver://localhost:57000 → Kết nối SQL Server chạy trên localhost với port 57000.
-    // databaseName=Game_PRJ → Chỉ định database Game_PRJ.
+    // databaseName=ShopLuyenTap → Chỉ định database ShopLuyenTap.
     public static String dbURL = "jdbc:sqlserver://localhost:57000;databaseName=ShopLuyenTap";
 
     // userDB & passDB: Chứa tài khoản SA (System Administrator) và mật khẩu dùng để đăng nhập vào SQL Server.
