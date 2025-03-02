@@ -90,48 +90,42 @@
 
                         <!-- Dropdown User: Hiển thị khi hover -->
                         <!-- Sử dụng tag JSTL (JavaServer Pages Standard Tag Library) để kiểm tra người dùng đã đăng nhập hay chưa -->
-                        
-                        <%-- <c:choose> --%>
-                        
-                            <!-- Nếu sessionScope.user rỗng (người dùng chưa đăng nhập) -->
-                            
-                            <%-- <c:when test="${empty sessionScope.user}"> --%>
-                            
+
+                        <c:choose>
+                            <%-- Nếu sessionScope.user rỗng (người dùng chưa đăng nhập) --%>
+                            <c:when test="${empty sessionScope.user}">
                                 <li class="nav-item dropdown">
-                                    <!-- Biểu tượng người dùng, khi click sẽ hiện dropdown -->
+                                    <%-- Biểu tượng người dùng, khi click sẽ hiện dropdown --%>
                                     <a class="nav-link dropdown-toggle custom-icon-link" href="#" id="userDropdown" role="button" 
                                        data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fas fa-user"></i>
                                     </a>
-                                    <!-- Menu dropdown với các lựa chọn đăng nhập và đăng ký -->
+                                    <%-- Menu dropdown với các lựa chọn đăng nhập và đăng ký --%>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                                        <li><a class="dropdown-item" href="">Đăng Nhập</a></li>
+                                        <li><a class="dropdown-item" href="login">Đăng Nhập</a></li>
                                         <li><a class="dropdown-item" href="">Đăng Ký</a></li>
                                     </ul>
                                 </li>
-                                
-                            <%-- </c:when> --%>
-                            
-                            <!-- Nếu sessionScope.user không rỗng (người dùng đã đăng nhập) -->
-                            
-                            <%-- <c:otherwise> --%>
-                                <!--<li class="nav-item dropdown">-->
-                                    
-                                <!-- Hiển thị biểu tượng người dùng với dropdown chứa các chức năng dành cho người dùng đã đăng nhập -->
-                                    
-                                    <!--<a class="nav-link dropdown-toggle custom-icon-link" href="#" id="userDropdown" role="button"--> 
-                                       <!--data-bs-toggle="dropdown" aria-expanded="false">-->
-                                        <!--<i class="fas fa-user"></i>-->
-                                    <!--</a>-->
-                                    <!-- Menu dropdown với các lựa chọn: tài khoản của tôi, đơn mua, đăng xuất -->
-                                    <!--<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">-->
-                                        <!--<li><a class="dropdown-item" href="">Tài khoản của tôi</a></li>-->
-                                        <!--<li><a class="dropdown-item" href="">Đơn mua</a></li>-->
-                                        <!--<li><a class="dropdown-item" href="">Đăng Xuất</a></li>-->
-                                    <!--</ul>-->
-                                <!--</li>-->
-                            <%--</c:otherwise>--%>
-                        <%--</c:choose>--%>
+                            </c:when>
+
+                            <%-- Nếu sessionScope.user không rỗng (người dùng đã đăng nhập) --%>
+                            <c:otherwise>
+                                <li class="nav-item dropdown">
+                                    <%-- Hiển thị biểu tượng người dùng với dropdown chứa các chức năng dành cho người dùng đã đăng nhập --%>
+                                    <a class="nav-link dropdown-toggle custom-icon-link" href="#" id="userDropdown" role="button" 
+                                       data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fas fa-user"></i>
+                                    </a>
+                                    <%-- Menu dropdown với các lựa chọn: tài khoản của tôi, đơn mua, đăng xuất --%>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                        <li><a class="dropdown-item" href="">Tài khoản của tôi</a></li>
+                                        <li><a class="dropdown-item" href="">Đơn mua</a></li>
+                                        <li><a class="dropdown-item" href="">Đăng Xuất</a></li>
+                                    </ul>
+                                </li>
+                            </c:otherwise>
+                        </c:choose>
+
 
                         <!-- Liên kết giỏ hàng -->
                         <!-- Hiển thị biểu tượng giỏ hàng cho phép người dùng truy cập vào trang giỏ hàng -->
@@ -144,7 +138,7 @@
                 </div>
             </div>
         </nav>
-        
+
         <script>
             // Hiệu ứng thay đổi khi scroll
             const navbar = document.getElementById('navbar');

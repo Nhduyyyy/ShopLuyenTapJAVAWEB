@@ -110,7 +110,7 @@ public class user {
     }
           
     // Constructor có tham số, ngoại trừ các trường tự động tạo (userId, createdAt, updatedAt)
-    public user(Role role, String username, String password, String email, String fullName,
+    public user(role role, String username, String password, String email, String fullName,
                 String phoneNumber, String avatar, int score, String sex, Date birthDate) {
         this.role = role;
         this.username = username;
