@@ -1,0 +1,214 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 2 thg 3, 2025, 01:29:53
+    Author     : nhatduy261179
+*/
+
+/* -------------------- TOÀN BỘ NAVBAR -------------------- */
+.custom-navbar {
+    background-color: #780000;  
+    /* Màu nền chính cho navbar */
+    transition: background-color 0.3s ease;  
+    /* Hiệu ứng chuyển màu nền mượt mà trong 0.3 giây */
+}
+.custom-navbar.scrolled {
+    background-color: #c1121f;  
+    /* Màu đậm hơn khi scroll */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);  
+    /* Thêm bóng đổ nhẹ cho hiệu ứng khi scroll */
+}
+
+/* -------------------- TOPBAR -------------------- */
+.custom-topbar {
+    background-color: #fdf0d5;  
+    /* Màu nền cho topbar */
+    font-size: 0.9rem;  
+    /* Kích thước chữ nhỏ cho topbar */
+    transition: background-color 0.3s ease;  
+    /* Hiệu ứng chuyển màu nền mượt mà khi có thay đổi */
+}
+.custom-topbar.scrolled {
+    opacity: 0.9;  
+    /* Giảm độ trong suốt khi scroll */
+}
+.custom-topbar a {
+    color: #003049;  
+    /* Màu chữ cho các liên kết trong topbar */
+    margin-right: 1rem;  
+    /* Khoảng cách bên phải giữa các liên kết */
+    text-decoration: none;  
+    /* Loại bỏ gạch chân của liên kết */
+    transition: color 0.3s ease;  
+    /* Hiệu ứng chuyển màu chữ khi hover */
+}
+.custom-topbar a:hover {
+    color: #c1121f;  
+    /* Đổi màu chữ khi hover vào liên kết */
+}
+
+/* -------------------- NAVBAR BRAND -------------------- */
+.custom-navbar .navbar-brand {
+    font-weight: bold;  
+    /* In đậm chữ cho logo/brand */
+    font-size: 1.5rem;  
+    /* Kích thước chữ của logo/brand */
+    display: flex;  
+    /* Sử dụng Flexbox để căn chỉnh logo/brand */
+    align-items: center;  
+    /* Căn giữa theo chiều dọc các phần tử trong logo/brand */
+    transition: transform 0.3s ease;  
+    /* Hiệu ứng chuyển đổi kích thước khi hover */
+}
+.custom-navbar .navbar-brand:hover {
+    transform: scale(1.05);  
+    /* Phóng to nhẹ logo/brand khi hover */
+}
+.custom-navbar .navbar-brand i {
+    margin-right: 8px;  
+    /* Thêm khoảng cách bên phải cho icon trong logo/brand */
+}
+
+/* -------------------- NAV-LINK & ICON LINK -------------------- */
+.custom-navbar .nav-link,
+.custom-navbar .navbar-text {
+    color: #fdf0d5;  
+    /* Màu chữ cho nav-link và navbar-text */
+    transition: color 0.3s ease, transform 0.3s ease;  
+    /* Hiệu ứng chuyển đổi màu chữ và phóng to khi hover */
+}
+.custom-navbar .nav-link:hover {
+    color: #669bbc;  
+    /* Đổi màu chữ khi hover vào nav-link */
+    transform: scale(1.05);  
+    /* Phóng to nhẹ nav-link khi hover */
+}
+.custom-icon-link {
+    margin-left: 1rem;  
+    /* Thêm khoảng cách bên trái cho icon link */
+    color: #fdf0d5;  
+    /* Màu chữ của icon link */
+    transition: color 0.3s ease, transform 0.3s ease;  
+    /* Hiệu ứng chuyển màu và phóng to khi hover */
+}
+.custom-icon-link:hover {
+    color: #669bbc;  
+    /* Đổi màu chữ khi hover vào icon link */
+    transform: scale(1.1);  
+    /* Phóng to icon link khi hover */
+}
+
+/* -------------------- SEARCH BAR -------------------- */
+.custom-search-bar {
+    display: flex;  
+    /* Sử dụng Flexbox cho thanh tìm kiếm */
+    flex: 1;  
+    /* Cho phép thanh tìm kiếm co giãn theo không gian có sẵn */
+    max-width: 600px;  
+    /* Giới hạn chiều rộng tối đa của thanh tìm kiếm */
+    margin: 0 auto;  
+    /* Căn giữa thanh tìm kiếm theo chiều ngang */
+}
+.custom-search-input {
+    flex: 1;  
+    /* Input chiếm hết không gian có sẵn trong thanh tìm kiếm */
+    border: none;  
+    /* Loại bỏ đường viền của input */
+    outline: none;  
+    /* Loại bỏ viền focus mặc định của input */
+    padding: 0.5rem 1rem;  
+    /* Khoảng cách bên trong input */
+    border-radius: 4px 0 0 4px;  
+    /* Bo tròn góc: bên trái bo, bên phải không bo */
+    transition: box-shadow 0.3s ease;  
+    /* Hiệu ứng chuyển đổi đổ bóng khi hover hoặc focus */
+}
+.custom-search-input:hover,
+.custom-search-input:focus {
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);  
+    /* Thêm đổ bóng khi hover hoặc focus vào input */
+}
+.custom-search-button {
+    border: none;  
+    /* Loại bỏ đường viền của nút tìm kiếm */
+    background-color: #003049;  
+    /* Màu nền của nút tìm kiếm */
+    color: #fdf0d5;  
+    /* Màu chữ của nút tìm kiếm */
+    padding: 0 1rem;  
+    /* Khoảng cách bên trong nút tìm kiếm */
+    border-radius: 0 4px 4px 0;  
+    /* Bo tròn góc: bên phải bo, bên trái không bo */
+    transition: background-color 0.3s ease, transform 0.3s ease;  
+    /* Hiệu ứng chuyển màu nền và phóng to khi hover */
+}
+.custom-search-button:hover {
+    background-color: #669bbc;  
+    /* Đổi màu nền khi hover vào nút tìm kiếm */
+    transform: scale(1.05);  
+    /* Phóng to nhẹ nút tìm kiếm khi hover */
+}
+
+/* -------------------- DROPDOWN -------------------- */
+.dropdown-menu {
+    border-radius: 0.25rem;  
+    /* Bo tròn các góc của dropdown */
+    transform: translateY(10px);  
+    /* Dịch chuyển dropdown xuống 10px so với vị trí ban đầu */
+    opacity: 0;  
+    /* Đặt độ mờ 0 để ẩn dropdown ban đầu */
+    visibility: hidden;  
+    /* Ẩn dropdown ban đầu */
+    transition: opacity 0.3s ease, transform 0.3s ease;  
+    /* Hiệu ứng chuyển đổi độ mờ và vị trí khi hiển thị dropdown */
+}
+.dropdown.show .dropdown-menu {
+    opacity: 1;  
+    /* Đặt độ mờ 1 để hiển thị dropdown */
+    visibility: visible;  
+    /* Cho phép hiển thị dropdown */
+    transform: translateY(0);  
+    /* Đưa dropdown về vị trí ban đầu */
+}
+.nav-item.dropdown:hover > .dropdown-menu {
+    display: block;  
+    /* Hiển thị dropdown khi hover vào nav-item có dropdown */
+    opacity: 1;  
+    /* Đảm bảo dropdown hiển thị rõ ràng */
+    visibility: visible;  
+    /* Cho phép dropdown được nhìn thấy */
+    transform: translateY(0);  
+    /* Đưa dropdown về vị trí ban đầu */
+}
+.dropdown-menu a {
+    color: #003049;  
+    /* Màu chữ cho các liên kết trong dropdown */
+    transition: background-color 0.3s ease;  
+    /* Hiệu ứng chuyển đổi màu nền khi hover */
+}
+.dropdown-menu a:hover {
+    background-color: #fdf0d5;  
+    /* Đổi màu nền của liên kết khi hover trong dropdown */
+}
+
+.nav {
+    transition: 0.5s ease-in-out;  
+    /* Hiệu ứng chuyển đổi khi hover vào phần nav */
+}
+
+.nav:hover {
+    transform: scale(1.5);  
+    /* Phóng to phần nav khi hover vào */
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+@media (max-width: 576px) {
+    .custom-search-bar {
+        max-width: 100%;  
+        /* Cho phép thanh tìm kiếm chiếm 100% chiều rộng trên màn hình nhỏ */
+        margin-top: 0.5rem;  
+        /* Thêm khoảng cách phía trên cho thanh tìm kiếm trên màn hình nhỏ */
+    }
+}

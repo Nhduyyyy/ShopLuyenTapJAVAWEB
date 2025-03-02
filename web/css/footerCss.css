@@ -1,0 +1,74 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 2 thg 3, 2025, 01:29:46
+    Author     : nhatduy261179
+*/
+
+
+
+/* Sử dụng Flexbox cho toàn trang */
+.wrapper {
+    display: flex;              
+    /* Đặt container sử dụng Flexbox để bố trí các phần tử con */
+    flex-direction: column;      
+    /* Sắp xếp các phần tử con theo chiều dọc */
+    background-color: #fdf0d5;     
+    /* Đặt màu nền nhẹ cho toàn bộ trang (có thể tùy chỉnh) */
+}
+
+footer {
+    flex-shrink: 0;              
+    /* Ngăn footer co lại khi container giảm kích thước, đảm bảo footer luôn hiển thị đầy đủ */
+}
+
+/* Footer custom */
+footer {
+    background-color: #003049;   
+    /* Đặt màu nền tối cho footer */
+    color: #fdf0d5;              
+    /* Đặt màu chữ sáng cho nội dung bên trong footer */
+    transition: background-color 0.3s ease; 
+    /* Hiệu ứng chuyển màu nền khi có thay đổi (ví dụ: hover) */
+}
+footer a {
+    color: #fdf0d5;              
+    /* Đặt màu chữ cho các liên kết bên trong footer */
+    text-decoration: none;       
+    /* Bỏ gạch chân của liên kết */
+    transition: color 0.3s ease;  
+    /* Hiệu ứng chuyển đổi màu cho liên kết khi hover */
+}
+footer a:hover {
+    color: #c1121f;             
+    /* Khi hover, màu chữ của liên kết thay đổi sang màu đỏ (hoặc màu khác) */
+}
+
+/* Hiệu ứng hover cho phần Social Icons */
+footer .social a {
+    font-size: 1.2rem;           
+    /* Tăng kích thước chữ (icon) cho các liên kết social */
+    margin: 0 0.5rem;            
+    /* Thêm khoảng cách giữa các icon */
+    transition: transform 0.3s ease; 
+    /* Hiệu ứng chuyển đổi kích thước (scale) khi hover */
+}
+footer .social a:hover {
+    transform: scale(1.2);      
+    /* Phóng to icon khi người dùng hover vào */
+}
+
+/* Hiệu ứng cho dòng copyright */
+.footer-copyright {
+    background-color: rgba(0, 0, 0, 0.1);  
+    /* Đặt màu nền mờ cho phần copyright */
+    transition: background-color 0.3s ease; 
+    /* Hiệu ứng chuyển đổi màu nền khi hover */
+}
+.footer-copyright:hover {
+    background-color: rgba(0, 0, 0, 0.2);  
+    /* Khi hover, màu nền đậm hơn một chút */
+}
+
