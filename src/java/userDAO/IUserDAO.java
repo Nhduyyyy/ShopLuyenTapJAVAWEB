@@ -4,6 +4,7 @@
  */
 package userDAO;
 
+import java.sql.SQLException;
 import models.user;
 
 /*
@@ -57,4 +58,6 @@ public interface IUserDAO {
      * null.
      */
     user authenticateUser(String identifier, String password);
+    
+    void insertUser(user user) throws SQLException;
 }

@@ -103,7 +103,7 @@
                                     <%-- Menu dropdown với các lựa chọn đăng nhập và đăng ký --%>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                         <li><a class="dropdown-item" href="login">Đăng Nhập</a></li>
-                                        <li><a class="dropdown-item" href="">Đăng Ký</a></li>
+                                        <li><a class="dropdown-item" href="register">Đăng Ký</a></li>
                                     </ul>
                                 </li>
                             </c:when>
@@ -120,7 +120,7 @@
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                         <li><a class="dropdown-item" href="">Tài khoản của tôi</a></li>
                                         <li><a class="dropdown-item" href="">Đơn mua</a></li>
-                                        <li><a class="dropdown-item" href="">Đăng Xuất</a></li>
+                                        <li><a class="dropdown-item" href="logout">Đăng Xuất</a></li>
                                     </ul>
                                 </li>
                             </c:otherwise>

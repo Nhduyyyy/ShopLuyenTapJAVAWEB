@@ -33,57 +33,97 @@
               crossorigin="anonymous" 
               referrerpolicy="no-referrer" />
         <style>
-            body {
-                font-family: Arial, sans-serif;
+
+            /* CSS cho trang đăng nhập, sử dụng class riêng biệt */
+            .login-page-wrapper {
                 background-color: #f2f2f2;
+                padding: 50px 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                font-family: Arial, sans-serif;
             }
-            .wrapper{
-                height: 100vh;
-            }
+
             .login-container {
-                width: 300px;
-                margin: 100px auto;
-                padding: 30px;
                 background-color: #fff;
-                border-radius: 5px;
-                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                padding: 30px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                max-width: 400px;
+                width: 100%;
             }
+
             .login-container h2 {
                 text-align: center;
                 margin-bottom: 20px;
+                color: #333;
             }
+
+            .login-container label {
+                display: block;
+                margin-bottom: 5px;
+                color: #555;
+            }
+
             .login-container input[type="text"],
             .login-container input[type="password"] {
                 width: 100%;
                 padding: 10px;
-                margin: 5px 0 15px;
+                margin-bottom: 15px;
                 border: 1px solid #ccc;
-                border-radius: 3px;
+                border-radius: 4px;
+                box-sizing: border-box;
             }
+
             .login-container input[type="submit"] {
                 width: 100%;
                 padding: 10px;
-                background-color: #4285F4;
                 border: none;
-                border-radius: 3px;
+                border-radius: 4px;
+                background-color: #4285f4;
                 color: #fff;
-                font-weight: bold;
+                font-size: 16px;
+                cursor: pointer;
             }
-            .error {
+
+            .login-container input[type="submit"]:hover {
+                background-color: #357ae8;
+            }
+
+            .login-container .error {
                 color: red;
-                text-align: center;
                 margin-bottom: 15px;
+                text-align: center;
             }
         </style>
+
     </head>
     <body>
-        <div class="wrapper">
+        <div class="login-page-wrapper">
             <div class="login-container">
                 <h2>Đăng nhập</h2>
                 <!-- Hiển thị thông báo lỗi nếu có -->
+                <!--
+                    Sử dụng thẻ JSTL <_c:if> để kiểm tra điều kiện:
+                    - Kiểm tra xem thuộc tính errorMessage có giá trị hay không.
+                    - Biểu thức $_{not empty errorMessage} trả về true nếu errorMessage không rỗng.
+                -->
                 <c:if test="${not empty errorMessage}">
+                    <!--
+                        Nếu điều kiện trên đúng, tức là có thông báo lỗi được truyền từ Servlet,
+                        thì hiển thị một div với class "error" để định dạng thông báo lỗi (theo CSS).
+                        Nội dung của div được lấy từ biến errorMessage và hiển thị cho người dùng.
+                    -->
                     <div class="error">${errorMessage}</div>
                 </c:if>
+
+                <!--
+                    $_{pageContext.request.contextPath} lấy đường dẫn gốc (context path) của ứng dụng hiện tại.
+                    Điều này giúp xây dựng các URL tuyệt đối, đảm bảo rằng các liên kết và tham chiếu tài nguyên luôn chính xác
+                    bất kể ứng dụng được triển khai ở đâu trên máy chủ.
+                    Ví dụ: Nếu ứng dụng được triển khai với context path là "/login", biểu thức này sẽ trả về "/login".
+                -->
                 <form action="${pageContext.request.contextPath}/login" method="post">
                     <label for="identifier">Tên đăng nhập hoặc Email:</label>
                     <input type="text" id="identifier" name="identifier" required />

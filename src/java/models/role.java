@@ -29,6 +29,12 @@ public class role {
         this.roleName = roleName;
         this.description = description;
     }
+
+    public role(int roleId, String roleName) {
+        this.roleId = roleId;
+        this.roleName = roleName;
+    }
+    
     
     /**
     * Constructor có tham số cho lớp Role.
