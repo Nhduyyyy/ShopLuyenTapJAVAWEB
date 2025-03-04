@@ -39,13 +39,17 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/home.jsp">Home</a>
                         </li>
+                        <c:choose>
+                            <c:when test="${sessionScope.user.role.roleName eq 'admin'}">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="${pageContext.request.contextPath}/userManagement">User</a>
+                                </li>
+                            </c:when>
+                        </c:choose>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
+                            <a class="nav-link" href="#">Profile</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

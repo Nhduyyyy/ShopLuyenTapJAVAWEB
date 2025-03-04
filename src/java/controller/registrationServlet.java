@@ -10,14 +10,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.sql.SQLException;
-import models.role;
-import models.user;
 import service.registrationService;
-import userDAO.UserDAO;
 
 // Đánh dấu lớp loginServlet là một Servlet, và ánh xạ (mapping) nó đến URL /register.
 // Khi có yêu cầu (request) gửi đến /register, container (ví dụ: Tomcat) sẽ khởi chạy Servlet này.

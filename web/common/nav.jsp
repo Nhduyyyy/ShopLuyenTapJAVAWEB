@@ -90,7 +90,6 @@
 
                         <!-- Dropdown User: Hiển thị khi hover -->
                         <!-- Sử dụng tag JSTL (JavaServer Pages Standard Tag Library) để kiểm tra người dùng đã đăng nhập hay chưa -->
-
                         <c:choose>
                             <%-- Nếu sessionScope.user rỗng (người dùng chưa đăng nhập) --%>
                             <c:when test="${empty sessionScope.user}">
@@ -118,7 +117,7 @@
                                     </a>
                                     <%-- Menu dropdown với các lựa chọn: tài khoản của tôi, đơn mua, đăng xuất --%>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                                        <li><a class="dropdown-item" href="">Tài khoản của tôi</a></li>
+                                        <li><a class="dropdown-item" href="common/navAdmin.jsp">Tài khoản của tôi</a></li>
                                         <li><a class="dropdown-item" href="">Đơn mua</a></li>
                                         <li><a class="dropdown-item" href="logout">Đăng Xuất</a></li>
                                     </ul>

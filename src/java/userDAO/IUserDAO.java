@@ -5,6 +5,7 @@
 package userDAO;
 
 import java.sql.SQLException;
+import java.util.List;
 import models.user;
 
 /*
@@ -60,4 +61,6 @@ public interface IUserDAO {
     user authenticateUser(String identifier, String password);
     
     void insertUser(user user) throws SQLException;
+    
+    List<user> selectAllUsers();
 }

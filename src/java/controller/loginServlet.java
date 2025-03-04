@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import models.user;
 import service.loginService;
-import userDAO.UserDAO;
+
 
 // Đánh dấu lớp loginServlet là một Servlet, và ánh xạ (mapping) nó đến URL /login.
 // Khi có yêu cầu (request) gửi đến /login, container (ví dụ: Tomcat) sẽ khởi chạy Servlet này.

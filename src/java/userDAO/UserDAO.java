@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import models.role;
 import models.user;
 
@@ -143,8 +145,7 @@ public class UserDAO implements IUserDAO {
         //   - Tạo một PreparedStatement từ chuỗi truy vấn SQL (được gán cho biến sql).
         //   - PreparedStatement giúp chuẩn bị và thực thi câu truy vấn với các tham số được gán sau này.
         //   - Việc sử dụng PreparedStatement cũng giúp bảo vệ khỏi các cuộc tấn công SQL injection.
-        try (Connection conn = DBConnection.getConnection(); 
-                PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             // Gán giá trị cho từng placeholder trong câu lệnh SQL theo thứ tự:
             // 1. Username: Lấy giá trị từ user.getUsername()
@@ -211,13 +212,49 @@ public class UserDAO implements IUserDAO {
             //    9. Sex
             //    10. BirthDate
             //    11. Locked (dù Locked là cột thứ 13, nó là placeholder thứ 11 trong VALUES)
-                       
             // executeUpdate() gửi câu lệnh SQL đã chuẩn bị (ở đây là lệnh INSERT) đến cơ sở dữ liệu.
             // Nó thực thi câu lệnh đó và trả về số lượng bản ghi đã bị thay đổi.
             // Ví dụ: Nếu lệnh INSERT thêm thành công 1 bản ghi, executeUpdate() sẽ trả về 1.
             stmt.executeUpdate();
 
         }
+    }
+
+    @Override
+    public List<user> selectAllUsers() {
+        List<user> userList = new ArrayList<>();
+        String sql = " SELECT u.UserID, u.Username, u.Email, u.Password, u.FullName, "
+                + "       u.PhoneNumber, u.Avatar, u.Score, u.Sex, "
+                + "       u.BirthDate, u.CreatedAt, u.UpdatedAt, u.Locked, "
+                + "       r.RoleID AS RoleId, r.RoleName, r.Description "
+                + "FROM [Users] u "
+                + "INNER JOIN Roles r ON u.RoleId = r.RoleID ";
+        try (Connection conn = DBConnection.getConnection(); 
+                PreparedStatement stmt = conn.prepareStatement(sql); 
+                ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                role role = new role(rs.getInt("roleId"), rs.getString("roleName"), rs.getString("Description"));
+                user user = new user();
+                user.setUserId(rs.getInt("UserID"));
+                user.setRole(role); // Gán đối tượng role đã tạo
+                user.setUsername(rs.getString("Username"));
+                user.setEmail(rs.getString("Email"));
+                user.setPassword(rs.getString("Password"));
+                user.setFullName(rs.getString("FullName"));
+                user.setPhoneNumber(rs.getString("PhoneNumber"));
+                user.setAvatar(rs.getString("Avatar"));
+                user.setScore(rs.getInt("Score"));
+                user.setSex(rs.getString("Sex"));
+                user.setBirthDate(rs.getDate("BirthDate"));
+                user.setCreatedAt(rs.getTimestamp("createdAt"));
+                user.setUpdatedAt(rs.getTimestamp("updatedAt"));
+                user.setLocked(rs.getBoolean("Locked"));              
+                userList.add(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userList;
     }
 
 }
