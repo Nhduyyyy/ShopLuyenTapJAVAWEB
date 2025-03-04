@@ -5,33 +5,33 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import models.user;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import userDAO.UserDAO;
 
 
-@WebServlet(name = "userManagementServlet", urlPatterns = {"/userManagement"})
-public class userManagementServlet extends HttpServlet {
+@WebServlet(name = "deleteUserServlet", urlPatterns = {"/deleteUser"})
+public class deleteUserServlet extends HttpServlet {
 
     private UserDAO userDao = new UserDAO();
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Lấy danh sách người dùng từ userDAO
-        List<user> userList = userDao.selectAllUsers();
-        
-        // Gán danh sách vào thuộc tính của request
-        request.setAttribute("userList", userList);
-        
-        // Forward sang trang JSP để hiển thị danh sách người dùng
-        request.getRequestDispatcher("/user/adminManageUsers.jsp").forward(request, response);
+        int id = Integer.parseInt(request.getParameter("id"));
+        try {
+            userDao.deleteUser(id);
+        } catch (SQLException ex) {
+            Logger.getLogger(deleteUserServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        response.sendRedirect(request.getContextPath() + "/userManagement");
     }
-
     
 }

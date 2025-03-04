@@ -256,5 +256,34 @@ public class UserDAO implements IUserDAO {
         }
         return userList;
     }
-
+    
+    @Override
+    public boolean deleteUser(int id) throws SQLException {
+        String sql = "DELETE FROM [Users] WHERE UserID = ?";
+        try (Connection conn = DBConnection.getConnection(); 
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            return stmt.executeUpdate() > 0;
+        }
+    }
+    
+    @Override
+    public boolean updateUser(user user) throws SQLException {
+        String sql = "UPDATE [Users] SET Username = ?, Email = ?, Password = ?, FullName = ?, RoleId = ?, PhoneNumber = ?, UpdatedAt = GETDATE(), Locked = ?, Avatar = ?, Score = ?, Sex = ?, BirthDate = ?  WHERE UserID = ?";
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4, user.getFullName());
+            stmt.setInt(5, user.getRole().getRoleId());
+            stmt.setString(6, user.getPhoneNumber());
+            stmt.setBoolean(7, user.isLocked());
+            stmt.setString(8, user.getAvatar());
+            stmt.setInt(9, user.getScore());
+            stmt.setString(10, user.getSex());
+            stmt.setDate(11, new java.sql.Date(user.getBirthDate().getTime()));
+            stmt.setInt(12, user.getUserId());
+            return stmt.executeUpdate() > 0;
+        }
+    }
 }

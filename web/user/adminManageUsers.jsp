@@ -35,6 +35,9 @@
               referrerpolicy="no-referrer" />
     </head>
     <body>
+        <<h1>Tạo người dùng mới</h1>
+        <a type="button" class="btn btn-outline-success" href="${pageContext.request.contextPath}/createUser">Create</a>
+
         <table class="table">
             <thead>
                 <tr>
@@ -51,6 +54,7 @@
                     <th>Đã khóa</th>                   
                     <th>ID Vai trò</th>
                     <th>Tên vai trò</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -81,13 +85,20 @@
                             </c:choose>
                         </td>                       
                         <td>${user.role.roleId}</td>
-                        <td>${user.role.roleName}</td>                     
+                        <td>${user.role.roleName}</td>  
+                        <td>
+                            <a type="button" class="btn btn-outline-danger" href="${pageContext.request.contextPath}/deleteUser?id=${user.userId}" onclick="return confirm('Bạn có chắc muốn xóa?');">Xóa</a>
+                        </td>
+                        <td>
+                            <a type="button" class="btn btn-outline-warning" href="${pageContext.request.contextPath}/updateUser?userId=${user.userId}">Update</a>
+                        </td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
     </body>
 </html>
+
 
 
 
