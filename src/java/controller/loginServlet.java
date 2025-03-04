@@ -12,6 +12,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import models.user;
+import service.loginService;
 import userDAO.UserDAO;
 
 // Đánh dấu lớp loginServlet là một Servlet, và ánh xạ (mapping) nó đến URL /login.
@@ -19,19 +20,19 @@ import userDAO.UserDAO;
 @WebServlet(name = "loginServlet", urlPatterns = {"/login"})
 public class loginServlet extends HttpServlet {
 
-    private UserDAO userDao = new UserDAO();
-    
+    // Tạo đối tượng LoginService
+    private loginService loginService = new loginService();
+
     // Phương thức xử lý yêu cầu GET đến /login
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         // request.getRequestDispatcher: 
         // Lấy đối tượng RequestDispatcher dựa trên đường dẫn đến tài nguyên cần chuyển giao.
         //  - Đường dẫn "/authenticator_authorization/login.jsp" chỉ định vị trí của trang JSP trong ứng dụng.
         //  - RequestDispatcher này cho phép chuyển giao yêu cầu HTTP hiện tại tới trang JSP đó,
         //    giữ nguyên tất cả các thông tin của request (tham số, thuộc tính, v.v.).
-
         // forward(request, response):
         // Phương thức forward chuyển giao toàn bộ yêu cầu và phản hồi hiện tại từ Servlet tới tài nguyên đã chỉ định.
         //  - Quá trình chuyển giao diễn ra hoàn toàn trên máy chủ, không tạo ra một yêu cầu mới.
@@ -44,12 +45,12 @@ public class loginServlet extends HttpServlet {
         // 4. URL trên trình duyệt không bị thay đổi, giúp bảo mật và ẩn đi cấu trúc nội bộ của ứng dụng.
         request.getRequestDispatcher("/authenticator_authorization/login.jsp").forward(request, response);
     }
-    
+
     // Phương thức xử lý yêu cầu POST khi người dùng gửi form đăng nhập
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         // Lấy thông tin đăng nhập từ đối tượng request:
         //  - request.getParameter("identifier"): Lấy giá trị từ trường input có name="identifier"
         //    (có thể là username, email hoặc số điện thoại) được gửi từ form đăng nhập.
@@ -58,13 +59,13 @@ public class loginServlet extends HttpServlet {
         // Những giá trị này được sử dụng để xác thực người dùng trong quá trình xử lý đăng nhập.
         String identifier = request.getParameter("identifier");
         String password = request.getParameter("password");
-        
-        // Xác thực người dùng bằng cách gọi phương thức authenticateUser từ UserDAO
+
+        // Sử dụng LoginService để xác thực người dùng.
         // Nếu thông tin đăng nhập hợp lệ, trả về đối tượng user; ngược lại trả về null.
-        user user = userDao.authenticateUser(identifier, password);
+        user user = loginService.authenticate(identifier, password);
 
         if (user != null) {
-            
+
             /*
             * Các bước hoạt động của hàm locked:
             * 1. Đánh giá biểu thức điều kiện: 
@@ -79,7 +80,7 @@ public class loginServlet extends HttpServlet {
             * - Nếu biểu thức boolean là true => Thực hiện các câu lệnh trong if.
             * - Nếu biểu thức boolean là false => Bỏ qua các câu lệnh trong if.
             * Đây là cách hoạt động cơ bản của cấu trúc điều kiện if trong Java.
-            */
+             */
             if (user.isLocked()) {
                 // Đặt một thuộc tính cho đối tượng request với key "errorMessage"
                 // và giá trị "Tài khoản của bạn đang bị khóa."
@@ -90,11 +91,11 @@ public class loginServlet extends HttpServlet {
                 request.getRequestDispatcher("login").forward(request, response);
                 return;
             }
-            
+
             // Lấy hoặc tạo một phiên làm việc (session) cho người dùng từ đối tượng request.
             // Nếu phiên làm việc đã tồn tại, nó sẽ được trả về; nếu không, một phiên làm việc mới sẽ được tạo.
             HttpSession session = request.getSession();
-            
+
             // Lưu thông tin người dùng (đối tượng user) vào phiên làm việc với key "user".
             // Việc này cho phép lưu trữ trạng thái đăng nhập, từ đó các trang khác có thể truy xuất thông tin người dùng từ session.
             session.setAttribute("user", user);

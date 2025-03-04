@@ -126,7 +126,7 @@
                 -->
                 <form action="${pageContext.request.contextPath}/login" method="post">
                     <label for="identifier">Tên đăng nhập hoặc Email:</label>
-                    <input type="text" id="identifier" name="identifier" required />
+                    <input type="text" id="identifier" name="identifier" required />   <!-- "required" buộc phải chọn -->
 
                     <label for="password">Mật khẩu:</label>
                     <input type="password" id="password" name="password" required />

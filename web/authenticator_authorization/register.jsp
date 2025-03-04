@@ -104,7 +104,18 @@
         <h1>Đăng ký tài khoản</h1>
 
         <!-- Hiển thị thông báo lỗi nếu có -->
+        <!-- Hiển thị thông báo lỗi nếu có -->
+        <!--
+            Sử dụng thẻ JSTL <_c:if> để kiểm tra điều kiện:
+            - Kiểm tra xem thuộc tính errorMessage có giá trị hay không.
+            - Biểu thức $_{not empty errorMessage} trả về true nếu errorMessage không rỗng. 
+        -->
         <c:if test="${not empty errorMessage}">
+            <!--
+                Nếu điều kiện trên đúng, tức là có thông báo lỗi được truyền từ Servlet,
+                thì hiển thị một div với class "error" để định dạng thông báo lỗi (theo CSS).
+                Nội dung của div được lấy từ biến errorMessage và hiển thị cho người dùng.
+            -->
             <p style="color:red;">${errorMessage}</p>
         </c:if>
 
@@ -126,16 +137,35 @@
                 <input type="text" id="fullName" name="fullName" required />
             </div>
             <div class="form-group">
-                <label for="sex">Giới tính:</label>
-                <select id="sex" name="sex" required>
-                    <option value="Male">Nam</option>
+                <!-- Label liên kết với phần tử select có id="sex" -->
+                <label for="sex">Giới tính:</label> 
+                
+                <!-- Dropdown chọn giới tính; "name" là key khi gửi form, "required" buộc phải chọn -->
+                <select id="sex" name="sex" required>  
+                    
+                    <!-- Lựa chọn với giá trị "Male" và hiển thị "Nam" -->
+                    <!-- - Thuộc tính "value" là "Male" (giá trị sẽ được gửi khi form được nộp). -->
+                    <option value="Male">Nam</option>   
+                    
+                    <!-- Lựa chọn với giá trị "Female" và hiển thị "Nữ" -->                
                     <option value="Female">Nữ</option>
-                    <option value="Other">Khác</option>
+                    
+                    <!-- Lựa chọn với giá trị "Other" và hiển thị "Khác" -->
+                    <option value="Other">Khác</option>    
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="birthDate">Ngày sinh:</label>
                 <input type="date" id="birthDate" name="birthDate" required />
+                <!--
+                    Thẻ input với type="date" tạo ra giao diện chọn ngày (date picker).
+                    Khi người dùng chọn ngày, giá trị được gửi theo định dạng ISO 8601, tức là "yyyy-MM-dd".
+                    Điều này phù hợp với định dạng được dùng trong Java:
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                    Nhờ đó, khi dữ liệu được gửi lên server, chuỗi ngày sinh có định dạng 
+                    chính xác để chuyển đổi thành đối tượng Date.
+                -->
             </div>
             <div class="form-group">
                 <label for="phoneNumber">Số điện thoại (tùy chọn):</label>

@@ -29,13 +29,21 @@ public class role {
         this.roleName = roleName;
         this.description = description;
     }
-
+    
+    /*
+    * Constructor của class role chỉ khởi tạo 2 thuộc tính 
+    * cơ bản cần thiết cho quá trình đăng ký:
+    * - roleId: Mã định danh của role (ví dụ: 3 cho người dùng thông thường)
+    * - roleName: Tên của role (ví dụ: "User")
+    *
+    * Vì trong quá trình đăng ký người dùng chỉ cần xác định id 
+    * và name của role nên constructor này chỉ nhận 2 tham số này.
+    */
     public role(int roleId, String roleName) {
         this.roleId = roleId;
         this.roleName = roleName;
     }
-    
-    
+      
     /**
     * Constructor có tham số cho lớp Role.
     * 

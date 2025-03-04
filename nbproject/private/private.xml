@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/nhatduy261179/NetBeansProjects/ShopLuyenTap/src/java/userDAO/IUserDAO.java</file>
-            <file>file:/Users/nhatduy261179/NetBeansProjects/ShopLuyenTap/src/java/userDAO/UserDAO.java</file>
+            <file>file:/Users/nhatduy261179/NetBeansProjects/ShopLuyenTap/src/java/controller/logoutServlet.java</file>
             <file>file:/Users/nhatduy261179/NetBeansProjects/ShopLuyenTap/src/java/controller/loginServlet.java</file>
-            <file>file:/Users/nhatduy261179/NetBeansProjects/ShopLuyenTap/src/java/models/user.java</file>
-            <file>file:/Users/nhatduy261179/NetBeansProjects/ShopLuyenTap/web/authenticator_authorization/register.jsp</file>
-            <file>file:/Users/nhatduy261179/NetBeansProjects/ShopLuyenTap/src/java/controller/registrationServlet.java</file>
+            <file>file:/Users/nhatduy261179/NetBeansProjects/ShopLuyenTap/web/common/nav.jsp</file>
+            <file>file:/Users/nhatduy261179/NetBeansProjects/ShopLuyenTap/web/common/navAdmin.jsp</file>
+            <file>file:/Users/nhatduy261179/NetBeansProjects/ShopLuyenTap/web/home.jsp</file>
         </group>
     </open-files>
 </project-private>
